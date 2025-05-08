@@ -15,7 +15,7 @@ app.use(express.json());
 // --- Routes ---
 app.use('/api/jobs', jobRoutes); // Mount job routes under /api/jobs
 
-// --- Basic Error Handling (Optional: Add more specific handlers) ---
+// --- Error Handling ---
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).send('Something broke!');
