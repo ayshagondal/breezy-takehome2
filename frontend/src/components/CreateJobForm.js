@@ -19,7 +19,7 @@ function CreateJobForm({ onJobCreated, onCancel }) {
     setIsLoading(true);
     try {
       const response = await createJob({ customerName, description });
-      // Optionally use response.data if needed
+      
       setCustomerName(''); // Clear form
       setDescription('');
       onJobCreated(); // Notify parent to refresh list

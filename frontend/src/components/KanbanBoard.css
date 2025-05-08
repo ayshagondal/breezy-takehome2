@@ -1,9 +1,9 @@
 /* frontend/src/components/KanbanBoard.css */
 .kanban-board {
-    display: flex; /* Arrange columns side-by-side */
-    gap: 25px; /* Space between columns */
+    display: flex; 
+    gap: 25px; 
     flex-direction: row;
-    justify-content: space-around; /* Or space-between, or flex-start */
+    justify-content: space-around; 
     padding: 10px 0;
     overflow-x: auto; 
     width: 100%;

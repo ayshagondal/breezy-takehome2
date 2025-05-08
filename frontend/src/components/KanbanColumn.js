@@ -12,13 +12,12 @@ const statusClassMap = {
 
 // KanbanColumn needs onUpdateStatus from its parent (KanbanBoard -> App)
 function KanbanColumn({ title, jobs, onUpdateStatus }) {
-  // Log to check if onUpdateStatus is correctly received for D&D and buttons
-  // console.log(`KanbanColumn (${title}) received onUpdateStatus type:`, typeof onUpdateStatus);
+  
 
   // --- D&D Drop Target Logic ---
   const [{ isOver, canDrop }, dropRef] = useDrop(
     () => ({
-      accept: ItemTypes.JOB_CARD, // This column accepts items of type JOB_CARD (from KanbanCard.js)
+      accept: ItemTypes.JOB_CARD, 
       drop: (draggedItem, monitor) => {
         // This is the 'item' object from useDrag in KanbanCard
         console.log(`--- KANBAN COLUMN (${title}) --- DROP HANDLER TRIGGERED ---`);
@@ -66,7 +65,7 @@ function KanbanColumn({ title, jobs, onUpdateStatus }) {
           <KanbanCard
             key={job.id}
             job={job}
-            onUpdateStatus={onUpdateStatus} // Keep this if you want buttons on card to also work
+            onUpdateStatus={onUpdateStatus} // want buttons on card to also work
           />
         ))}
         {/* Optional: Visual cues for D&D */}

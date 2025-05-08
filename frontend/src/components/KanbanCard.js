@@ -1,10 +1,9 @@
 // frontend/src/components/KanbanCard.js
-// frontend/src/components/KanbanCard.js
 import React from 'react';
-import { useDrag } from 'react-dnd'; // <--- IMPORT useDrag
+import { useDrag } from 'react-dnd'; 
 import './KanbanCard.css';
 
-export const ItemTypes = { // Make sure this is exported if KanbanColumn needs it
+export const ItemTypes = { 
   JOB_CARD: 'job_card',
 };
 
@@ -22,20 +21,10 @@ function KanbanCard({ job, onUpdateStatus }) {
     collect: (monitor) => ({
       isDragging: !!monitor.isDragging(),
     }),
-    // Optional endDrag handler
-    // end: (item, monitor) => {
-    //   if (!monitor.didDrop()) {
-    //     console.log(`Card ${item.id} drag ended without a successful drop.`);
-    //   }
-    // }
+    
   }));
 
-  // The dragRef is used to make the element draggable
-  // The previewRef is used to show a preview of the dragged item
-  // useDrag returns [collectedProps, dragSourceRef, dragPreviewRef]
-  // We assign dragSourceRef to the element we want to be draggable.
-  // We assign dragPreviewRef to the element that should be the preview (can be the same).
-
+  
   // To make the entire card the drag source and the preview:
   const combinedRef = (el) => {
     dragRef(el);

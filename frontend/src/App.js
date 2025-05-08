@@ -62,9 +62,7 @@ function App() {
     } catch (err) {
         console.error("Failed to update status:", err);
         setError(`Failed to move job ${jobId}. Please try again.`);
-        // Revert optimistic update (commented out, implement if needed)
-        // setJobs(originalJobs); // Need originalJobs from closure
-        // For simplicity now, just reload on error
+        
         loadJobs();
     }
   }, [jobs, loadJobs]); // Include dependencies
