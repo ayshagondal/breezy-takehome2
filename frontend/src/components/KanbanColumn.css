@@ -1,0 +1,59 @@
+/* frontend/src/components/KanbanColumn.css */
+.kanban-column {
+    flex: 1; /* Allow columns to grow and shrink, or set a fixed width e.g., width: 300px; */
+    min-width: 300px; /* Minimum width before wrapping or shrinking too much */
+    max-width: 360px; /* Optional max width */
+    background-color: #2c2c2c; /* Light grey background for columns */
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease, transform 0.2s ease-out;
+  }
+  
+  .kanban-column h3 {
+    text-align: center;
+    color: #f0f0f0; /* Lighter text for column titles */
+    margin-top: 0;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #444; /* Subtler border */
+    font-size: 1.3em;
+    font-weight: 500; /* Medium weight */
+    letter-spacing: 0.5px;
+  }
+  /* Optional: Slight lift on hover */
+.kanban-column:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.35);
+}
+  
+  .column-cards {
+    min-height: 100px; /* So empty columns still have some visible area */
+    padding: 5px 0;
+    /* You can add specific styling for the card container if needed */
+  }
+  .kanban-column.is-over { /* When a card is hovering over a valid drop target column */
+    background-color: #3a3a3a;  
+    border-color: #c3e6cb;
+    box-shadow: 0 0 10px rgba(40, 167, 69, 0.3); /* Greenish shadow */
+  }
+  .drop-placeholder, .empty-column-drop-cue {
+    min-height: 80px;
+    border: 2px dashed #555; /* Darker dashed border */
+    border-radius: 8px;
+    margin: 15px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #888; /* Lighter cue text */
+    font-style: italic;
+    background-color: rgba(255, 255, 255, 0.03); /* Very subtle background */
+    transition: background-color 0.2s ease;
+  }
+.kanban-column.is-over .drop-placeholder,
+.kanban-column.is-over .empty-column-drop-cue {
+  background-color: rgba(0, 188, 212, 0.1); /* Accent color tint */
+  border-color: #00bcd4;
+  color: #00bcd4;
+}
+  
