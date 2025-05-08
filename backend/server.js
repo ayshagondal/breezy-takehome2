@@ -7,8 +7,7 @@ const jobRoutes = require('./routes/jobs');
 const app = express();
 const PORT = process.env.PORT || 5001;
 
-// --- Middleware ---
-// Enable CORS for all origins (adjust in production!)
+
 app.use(cors());
 // Parse JSON request bodies
 app.use(express.json());
