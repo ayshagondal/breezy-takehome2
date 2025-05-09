@@ -3,9 +3,9 @@ console.log('[jobController.js] File loading...');
 const db = require('../db');
 const { JOB_STATUSES, VALID_STATUSES } = require('../constants');
 
-const getAllJobs = async (req, res) => { // Your actual function
+const getAllJobs = async (req, res) => { 
   try {
-      console.log('[jobController.js] ACTUAL getAllJobs called'); // Add a log
+      console.log('[jobController.js] ACTUAL getAllJobs called'); 
       const queryText = 'SELECT * FROM jobs ORDER BY created_at DESC';
       const result = await db.query(queryText);
       res.status(200).json(result.rows);
@@ -15,7 +15,7 @@ const getAllJobs = async (req, res) => { // Your actual function
   }
 };
 
-const createJob = async (req, res) => { // Your actual function
+const createJob = async (req, res) => { 
   console.log('[jobController.js] ACTUAL createJob called with body:', req.body);
   const { customerName, description } = req.body;
   if (!customerName || !description) {
@@ -83,67 +83,3 @@ module.exports = {
 };
 
 console.log('[jobController.js] module.exports set to:', module.exports);
-
-/*
-const db = require('../db');
-const { JOB_STATUSES, VALID_STATUSES } = require('../constants');
-
-exports.createJob  = async (req,res) => {
-    const { customerName, description } = req.body;
-
-    if (!customerName||!description) {
-        return res.status(400).json({ error: 'Customer name and description are required' });
-    }
-    try {
-        const queryText = ' INSERT INTO jobs (customer_name, description, status) VALUES ($1, $2, $3) RETURNING *';
-        const values = [customerName, description, JOB_STATUSES.NOT_YET_STARTED];
-        const result = await db.query(queryText, values);
-        res.status(201).json(result.rows[0]);
-    } catch (error) {
-        console.error('Error creating job:', error);
-        res.status(500).json({ error: 'Internal server error' });
-    }
-};
-exports.getAllJobs = async (req, res) => {
-    try {
-        const queryText = 'SELECT * FROM jobs ORDER BY created_at DESC';
-        const result = await db.query(queryText);
-        res.status(200).json(result.rows);
-    } catch (error) {
-        console.error('Error fetching jobs:', error);
-        res.status(500).json({ error: 'Internal server error' });
-    }
-};
-
-exports.updateJobStatus = async (req, res) => {
-    const { id } = req.params;
-    const { status } = req.body;
-
-  if (!status || !VALID_STATUSES.includes(status)) {
-    return res.status(400).json({ message: `Invalid status. Must be one of: ${VALID_STATUSES.join(', ')}` });
-  }
-
-  try {
-    const queryText = `
-      UPDATE jobs
-      SET status = $1, updated_at = NOW()
-      WHERE id = $2
-      RETURNING *;
-    `;
-    const values = [status, id];
-    const result = await db.query(queryText, values);
-
-    if (result.rows.length === 0) {
-      return res.status(404).json({ message: 'Job not found.' });
-    }
-    res.status(200).json(result.rows[0]);
-  } catch (error) {
-      // Catch potential CHECK constraint violation
-      if (error.code === '23514') { // PostgreSQL error code for check constraint violation
-          return res.status(400).json({ message: `Invalid status value: ${status}` });
-      }
-      console.error('Error updating job status:', error);
-      res.status(500).json({ message: 'Internal Server Error' });
-  }
-};
-*/

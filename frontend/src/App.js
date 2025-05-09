@@ -17,7 +17,8 @@ function App() {
       setIsLoading(true);
       setError(null);
       const response = await fetchJobs();
-      // Convert snake_case from DB to camelCase if preferred (optional)
+      // Convert snake_case from DB to camelCase if preferred 
+      // didnt use this for now
       const formattedJobs = response.data.map(job => ({
          id: job.id,
          customerName: job.customer_name,
@@ -39,15 +40,14 @@ function App() {
   // Load jobs on initial mount
   useEffect(() => {
     loadJobs();
-  }, [loadJobs]); // Include loadJobs in dependency array
+  }, [loadJobs]); 
 
   // Handler for when a new job is created (called by CreateJobForm)
   const handleJobCreated = () => {
     loadJobs(); // Refetch the list
   };
 
-  // Handler for updating job status (to be passed down eventually)
-  // Note: This is needed for basic status update AND drag-and-drop
+  // Handler for updating job status 
   const handleUpdateStatus = useCallback(async (jobId, newStatus) => {
     try {
         // Optimistic UI Update (Optional but good UX)
